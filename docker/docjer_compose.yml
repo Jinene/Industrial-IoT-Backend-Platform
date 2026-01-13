@@ -1,1 +1,32 @@
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    env_file:
+      - ../.env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - mqtt
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: iot
+      POSTGRES_USER: iot_user
+      POSTGRES_PASSWORD: iot_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - iot_db_data:/var/lib/postgresql/data
+
+  mqtt:
+    image: eclipse-mosquitto:2
+    ports:
+      - "1883:1883"
+
+volumes:
+  iot_db_data:
 
