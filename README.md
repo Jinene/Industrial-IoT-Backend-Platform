@@ -20,7 +20,6 @@ Publish MQTT test data
 In another terminal:
 
 bash
-Copier le code
 python scripts/mqtt_simulator.py
 Endpoints
 GET /api/v1/health
@@ -36,7 +35,6 @@ POST /api/v1/data/ingest (manual ingest)
 GET /api/v1/data (filterable)
 
 yaml
-Copier le code
 
 ---
 
